@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@font-face {
+  font-family: 'Black Chancery';
+  src: url('fonts/BlackChancery.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 9px;
+}
+
+#magic {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
+.playground {
+  z-index: 1;
+  pointer-events: none; 
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bottomPosition {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.minText {
+  font-size: 14px;
+}
+
+.logo {
+  width: 4rem;    /* or whatever size fits */
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+a {
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+.logo-link {
+  pointer-events: auto;
+}
+
+.portfolio-button {
+  display: inline-block;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.portfolio-content {
+  background-color: transparent;        
+  border: 0px solid #222;               
+  border-radius: 20px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio-button:hover .portfolio-content {
+  background-color: #444;    
+  border-color: #444;
+}
+
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.special {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+}
+
+.minText {
+  font-size: 16px;
+  display: block;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.ps-note {
+  position: fixed;
+  top: 50%;
+  left: 2.5rem;                /* shift bubble right */
+  transform: translate(0, -50%);
+  background: #505050;
+  color: #000;
+  font-family: 'Black Chancery', cursive;
+  font-size: 2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: visible;         /* allow pseudo-element to show outside */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.ps-note::before {
+  content: '';
+  position: absolute;
+  left: -1.3rem;               /* move base of triangle further left */
+  top: 49.5%;
+  transform: translateY(-50%);
+  border-top: 2rem solid transparent;
+  border-bottom: 2rem solid transparent;
+  border-right: 2rem solid #505050;  /* larger “carrot” */
+  z-index: -1;
+}
+
+
+.ps-note.hide {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+}
+
+
+#mobileOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #303030;
+  color: #fff;
+  font-size: 2.5rem;
+  font-style: italic;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2000;
+}
+
+/* ———————— Show only on phones/tablets ———————— */
+@media (max-width: 600px) {
+  .playground {
+    display: none;
+  }
+  #mobileOverlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* mobile background override */
+  body.mobile {
+    background-color: #303030 !important;
+  }
+  .logo {
+    width: 60px;
+  }
+  .special { font-size: 1.5rem; }
+
+
+  .minText { font-size: 1rem; }
+
+
+  .ps-note {
+    font-size: 1.2rem;
+    left: 1rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+
+  .ps-note::before {
+    left: -1.5rem;
+    border-top: 1.2rem solid transparent;
+    border-bottom: 1.2rem solid transparent;
+    border-right: 1.2rem solid #505050;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Enlarge overlay headline */
+  #mobileOverlay {
+    font-size: 3.5rem;
+  }
+
+  /* Bigger logo */
+  #mobileOverlay .logo {
+    width: 6rem;
+    height: auto;
+  }
+
+  /* Larger name/title */
+  #mobileOverlay .special {
+    font-size: 2.5rem;
+  }
+  #mobileOverlay .minText {
+    font-size: 1.8rem;
+  }
+
+  /* Enlarge card padding & add grey background */
+  #mobileOverlay .portfolio-content {
+    background-color: transparent;
+    padding: 40px 50px;
+  }
+
+  /* Space below the slogan */
+  #mobileOverlay .portfolio-button {
+    margin-top: 2rem !important;
+  }
+}
