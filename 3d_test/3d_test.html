@@ -158,9 +158,33 @@
             color: #999;
             margin-top: 5px;
         }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            opacity: 0;
+        }
+
+        .home-button img {
+            width: 50px;
+            height: auto;
+        }
+
+        .home-button:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <a href="../index.html" class="home-button">
+        <img src="../assets/AM Logo Inverted.png" alt="Home">
+    </a>
     <div class="container">
         <h1>My 3D Models</h1>
         <p class="subtitle">Interactive STL Model Viewer with Animations</p>
@@ -443,6 +467,13 @@
 
         // Animate page elements on load
         function animatePageElements() {
+            anime({
+                targets: '.home-button',
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeOutCubic'
+            });
+
             anime({
                 targets: 'h1',
                 opacity: [0, 1],
